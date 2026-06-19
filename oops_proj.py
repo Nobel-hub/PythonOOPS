@@ -1,21 +1,67 @@
 class chatbook:
     def __init__(self):
-        self.username = ""
-        self.password = ""
+        self.username = None
+        self.password = None
         self.loggedIn = False
         self.menu()
+
     def menu(self):
-        user_input = input("Welcome to Chatbook! Please select an option:\n1. Signup\n2. Signin\n3. Write a Post\n4. Message a friend\n5. Exit\n")
+        user_input = input(
+            "===== Welcome to Chatbook =====\n"
+            "1. Signup\n"
+            "2. Signin\n"
+            "3. Write a Post\n"
+            "4. Message a friend\n"
+            "5. Exit\n"
+            "Select option: "
+        )
+
+        print()
+
         if user_input == "1":
-            pass
+            self.signup()
+
         elif user_input == "2":
-            pass
+            self.signin()
+
         elif user_input == "3":
             pass
+
         elif user_input == "4":
             pass
+
         else:
             exit()
-            
+
+    def signup(self):
+        if self.username is not None:
+            print("Account already exists. Please sign in.\n")
+            self.menu()
+            return
+
+        self.username = input("Enter a username: ")
+        self.password = input("Enter a password: ")
+
+        print("\nSignup successful! Please sign in.\n")
+        self.menu()
+
+    def signin(self):
+        if self.username is None:
+            print("No account found. Please sign up first.\n")
+            self.menu()
+            return
+
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+
+        if username == self.username and password == self.password:
+            self.loggedIn = True
+            print("\nSignin successful! Welcome to Chatbook.\n")
+        else:
+            print("\nInvalid credentials. Please try again.\n")
+
+        self.menu()
+
+
 if __name__ == "__main__":
     chatbook()
