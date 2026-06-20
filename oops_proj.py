@@ -1,10 +1,23 @@
 class chatbook:
+    __user_id = 1
     def __init__(self):
+        self.id = chatbook.__user_id
+        chatbook.__user_id   += 1
+        self.__name = "Default user"
         self.username = None
         self.password = None
         self.loggedIn = False
-        self.menu()
-
+        # self.menu()
+    @staticmethod
+    def get_id():
+        return chatbook.__user_id
+    @staticmethod
+    def set_id(id):
+        chatbook.__user_id = id
+    def get_name(self):
+        return self.__name
+    def set_name(self, name):
+        self.__name = name
     def menu(self):
         user_input = input(
             "===== Welcome to Chatbook =====\n"
@@ -80,7 +93,3 @@ class chatbook:
         message_content = input("Write your message: ")
         print(f"\nMessage sent to {friend_username}: {message_content}\n")
         self.menu()
-
-
-# if __name__ == "__main__":
-#     chatbook()
