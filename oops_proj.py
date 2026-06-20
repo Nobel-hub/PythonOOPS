@@ -8,7 +8,7 @@ class chatbook:
         self.password = None
         self.loggedIn = False
         # self.menu()
-    @staticmethod
+    @staticmethod 
     def get_id():
         return chatbook.__user_id
     @staticmethod
